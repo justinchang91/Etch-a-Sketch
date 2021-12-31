@@ -21,6 +21,25 @@ function toggleFaded() {
     }
 }
 
+function setFaded() {
+    faded = !faded;
+    if (faded) {
+        const squares = document.querySelectorAll(".square");
+        squares.forEach(square => {
+            square.addEventListener("mouseenter", fade);
+        });
+        const fadedBtn = document.querySelector(".fade");
+        fadedBtn.style.backgroundColor = "yellow";
+    } else {
+        const squares = document.querySelectorAll(".square");
+        squares.forEach(square => {
+            square.removeEventListener("mouseenter", fade);
+        });
+        const fadedBtn = document.querySelector(".fade");
+        fadedBtn.style.removeProperty("background-color");
+    }
+}
+
 function setRegularColour() {
     regularOn = !regularOn;
 
@@ -93,8 +112,6 @@ function changeToRed(e) {
         let rgbColour = e.target.style.backgroundColor;
         if (rgbColour == "rgb(0, 0, 0)") {
             e.target.style.backgroundColor = "rgb(255,0,0)";
-        } else {
-            fade(e);
         }
     }
 }
@@ -110,8 +127,6 @@ function changeToRandom(e) {
         let rgbColour = e.target.style.backgroundColor;
         if (rgbColour == "rgb(0, 0, 0)") {
             e.target.style.backgroundColor = `rgb(${valX},${valY},${valZ})`;
-        } else {
-            fade(e);
         }
     }
     
@@ -164,4 +179,4 @@ const randomBtn = document.querySelector(".random");
 randomBtn.addEventListener("click", setRandomColour);
 
 const fadeBtn = document.querySelector(".fade");
-fadeBtn.addEventListener("click", toggleFaded);
+fadeBtn.addEventListener("click", setFaded);
