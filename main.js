@@ -11,12 +11,13 @@ let faded = false;
 let regularOn = false;
 let randomOn = false;
 
-function toggleFaded(e) {
+function toggleFaded() {
     faded = !faded;
+    const fadedBtn = document.querySelector(".fade");
     if (faded) {
-        e.target.style.backgroundColor = "yellow";
+        fadedBtn.style.backgroundColor = "yellow";
     } else {
-        e.target.style.removeProperty("background-color");
+        fadedBtn.style.removeProperty("background-color");
     }
 }
 
@@ -123,8 +124,7 @@ function setGrid(squareWidth, totalSquares) {
         square.classList.add("square");
         square.style.backgroundColor = "rgb(0,0,0)";
         square.style.width = `${squareWidth-2}px`;
-        square.style.height = `${squareWidth-2}px`; 
-        //square.addEventListener("mouseenter", changeToRed);
+        square.style.height = `${squareWidth-2}px`;
         grid.appendChild(square);    
     }
 
@@ -146,6 +146,9 @@ function resetGrid() {
 
   const grid = document.querySelector(".grid");
   removeAllChildNotes(grid);
+  regularOn = false;
+  randomOn = false;
+  if (faded) toggleFaded();
   setGrid(squareWidth, totalSquares);
 }
 
