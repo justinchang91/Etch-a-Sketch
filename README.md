@@ -1,0 +1,1 @@
+This is my etch-a-sketch javascript project. Hoping to demonstrate my skills in HTML, CSS and JS. 
