@@ -180,3 +180,15 @@ randomBtn.addEventListener("click", setRandomColour);
 
 const fadeBtn = document.querySelector(".fade");
 fadeBtn.addEventListener("click", setFaded);
+
+document.addEventListener("keyup", function(e) {
+    if (e.code === "KeyQ") {
+        resetGrid();
+    } else if (e.code === "KeyW") {
+        setRegularColour();
+    } else if (e.code === "KeyE") {
+        setRandomColour();
+    } else if (e.code === "KeyR") {
+        setFaded();
+    }
+});
